@@ -1,6 +1,6 @@
 // map
 var courses = [
-    {name: 'Javascript', coin: 250},
+    {name: 'Javascript',coin: 250},
     {name: 'HTML, CSS',coin: 0},
     {name: 'Ruby',coin: 200},
     {name: 'PHP',coin: 400},
@@ -12,14 +12,14 @@ Array.prototype.myMap = function (callback) {
     for (let i = 0; i < this.length; i++) {
         newArray.push(callback(this[i], i, this));
     }
-    return newArray;
+    return newArray;    
 }
 
 var result = courses.myMap(function (course) {
     return course.name;
 });
 
-console.log(result);
+console.log( "Map: "+  result);
 
 // foreach
 
@@ -64,7 +64,6 @@ var isFree = courses.myEvery(function (course, index, array) {
     return course.coin === 0;
 });
 console.log(isFree);
-
 
 // find
 
