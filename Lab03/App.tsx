@@ -25,7 +25,7 @@ const FirstScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#00BFFF', // Màu nền xanh
+    backgroundColor: '#00BFFF', 
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
