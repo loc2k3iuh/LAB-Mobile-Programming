@@ -60,7 +60,7 @@ const FirstScreen = () => {
 
   };
 
-  const shuffleString = (str) => {
+  const shuffleString = (str: string) => {
   const arr = str.split('');
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -90,7 +90,7 @@ const FirstScreen = () => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 25 }}>
             <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Include lower case letters </Text>
-            <TouchableOpacity style={styles.checkboxContainer} onPress={toggleCheckBoxLowerCase}>
+            <TouchableOpacity  onPress={toggleCheckBoxLowerCase}>
               <Icon
                 name={isCheckedLowerCase ? 'check-box' : 'check-box-outline-blank'}
                 size={24}
@@ -101,7 +101,7 @@ const FirstScreen = () => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 25 }}>
             <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Include upcase letters </Text>
-            <TouchableOpacity style={styles.checkboxContainer} onPress={toggleCheckBoxUpCase}>
+            <TouchableOpacity  onPress={toggleCheckBoxUpCase}>
               <Icon
                 name={isCheckedUpCase ? 'check-box' : 'check-box-outline-blank'}
                 size={24}
@@ -112,7 +112,7 @@ const FirstScreen = () => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 25 }}>
             <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Include number</Text>
-            <TouchableOpacity style={styles.checkboxContainer} onPress={toggleCheckBoxNumber}>
+            <TouchableOpacity  onPress={toggleCheckBoxNumber}>
               <Icon
                 name={isCheckedNumber ? 'check-box' : 'check-box-outline-blank'}
                 size={24}
@@ -123,7 +123,7 @@ const FirstScreen = () => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 25 }}>
             <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Include special symbol</Text>
-            <TouchableOpacity style={styles.checkboxContainer} onPress={toggleCheckBoxSpecialSymbol}>
+            <TouchableOpacity onPress={toggleCheckBoxSpecialSymbol}>
               <Icon
                 name={isCheckedSpecialSymbol ? 'check-box' : 'check-box-outline-blank'}
                 size={24}
