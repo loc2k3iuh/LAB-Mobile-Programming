@@ -10,7 +10,7 @@ const FirstScreen = () => {
   const [isCheckedNumber, setIsCheckedNumber] = useState(false);
   const [isCheckedSpecialSymbol, setIsCheckedSpecialSymbol] = useState(false);
   const [password, setPassword] = useState('');
-  const [passwordLength, setPasswordLength] = useState('');
+  const [passwordLength, setPasswordLength] = useState("");
 
   const toggleCheckBoxLowerCase = () => setIsCheckedLowerCase(!isCheckedLowerCase);
   const toggleCheckBoxUpCase = () => setIsCheckedUpCase(!isCheckedUpCase);
@@ -22,27 +22,52 @@ const FirstScreen = () => {
     const upperCaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const numbers = '0123456789';
     const specialSymbols = '!@#$%^&*()_+[]{}|;:,.<>?';
+    let characterSet = "";
+    let guaranteedCharacters = "";
 
-    let characterSet = '';
-    if (isCheckedLowerCase) characterSet += lowerCaseLetters;
-    if (isCheckedUpCase) characterSet += upperCaseLetters;
-    if (isCheckedNumber) characterSet += numbers;
-    if (isCheckedSpecialSymbol) characterSet += specialSymbols;
-
-    if (characterSet === '') {
-      alert('Please select at least one character type!');
-      return;
+    if(isCheckedLowerCase) 
+    {
+      characterSet += lowerCaseLetters;
+      guaranteedCharacters += lowerCaseLetters[Math.floor(Math.random() * lowerCaseLetters.length)];
+    }
+    if(isCheckedUpCase) {
+      characterSet+=upperCaseLetters;
+      guaranteedCharacters += upperCaseLetters[Math.floor(Math.random() * upperCaseLetters.length)];
+    }
+    if(isCheckedNumber) {
+      characterSet+=numbers;
+      guaranteedCharacters += numbers[Math.floor(Math.random() * numbers.length)];
+    }
+    if(isCheckedSpecialSymbol) {
+      characterSet+=specialSymbols;
+      guaranteedCharacters += specialSymbols[Math.floor(Math.random() * specialSymbols.length)];
     }
 
-    const passLength = parseInt(passwordLength) || 8; // Mặc định là 8 nếu không nhập
-    let generatedPassword = '';
-    for (let i = 0; i < passLength; i++) {
-      const randomIndex = Math.floor(Math.random() * characterSet.length);
-      generatedPassword += characterSet[randomIndex];
+    if(characterSet === ""){
+     alert('Please select at least one character type!'); 
     }
 
-    setPassword(generatedPassword);
+    const passLength = parseInt(passwordLength) || 8;
+    let generatePassword = guaranteedCharacters;
+    for(let i = guaranteedCharacters.length; i< passLength; i++){
+      const radomIndex = Math.floor(Math.random() * characterSet.length);
+      generatePassword += characterSet[radomIndex];
+    }
+
+    generatePassword = shuffleString(generatePassword);
+
+    setPassword(generatePassword);
+
   };
+
+  const shuffleString = (str) => {
+  const arr = str.split('');
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr.join('');
+};
 
   return (
     <View style={styles.container}>
@@ -56,7 +81,7 @@ const FirstScreen = () => {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Password length </Text>
             <TextInput
-              style={{ width: 118, height: 33, backgroundColor: 'white' }}
+              style={{ width: 118, height: 33, backgroundColor: 'white'}}
               keyboardType="numeric"
               value={passwordLength}
               onChangeText={setPasswordLength}
@@ -65,7 +90,7 @@ const FirstScreen = () => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 25 }}>
             <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Include lower case letters </Text>
-            <TouchableOpacity  onPress={toggleCheckBoxLowerCase}>
+            <TouchableOpacity style={styles.checkboxContainer} onPress={toggleCheckBoxLowerCase}>
               <Icon
                 name={isCheckedLowerCase ? 'check-box' : 'check-box-outline-blank'}
                 size={24}
@@ -76,7 +101,7 @@ const FirstScreen = () => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 25 }}>
             <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Include upcase letters </Text>
-            <TouchableOpacity  onPress={toggleCheckBoxUpCase}>
+            <TouchableOpacity style={styles.checkboxContainer} onPress={toggleCheckBoxUpCase}>
               <Icon
                 name={isCheckedUpCase ? 'check-box' : 'check-box-outline-blank'}
                 size={24}
@@ -87,7 +112,7 @@ const FirstScreen = () => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 25 }}>
             <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Include number</Text>
-            <TouchableOpacity  onPress={toggleCheckBoxNumber}>
+            <TouchableOpacity style={styles.checkboxContainer} onPress={toggleCheckBoxNumber}>
               <Icon
                 name={isCheckedNumber ? 'check-box' : 'check-box-outline-blank'}
                 size={24}
@@ -98,7 +123,7 @@ const FirstScreen = () => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 25 }}>
             <Text style={{ color: 'white', fontWeight: '700', fontSize: 20 }}>Include special symbol</Text>
-            <TouchableOpacity  onPress={toggleCheckBoxSpecialSymbol}>
+            <TouchableOpacity style={styles.checkboxContainer} onPress={toggleCheckBoxSpecialSymbol}>
               <Icon
                 name={isCheckedSpecialSymbol ? 'check-box' : 'check-box-outline-blank'}
                 size={24}
@@ -157,9 +182,10 @@ const styles = StyleSheet.create({
     height: 55,
     backgroundColor: '#151537',
     marginTop: 40,
-    color: 'black',
+    color: 'white',
     fontWeight: '700',
     fontSize: 20,
+    paddingLeft: 10
   },
   body: {
     paddingTop: 30,
