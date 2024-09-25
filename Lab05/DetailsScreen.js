@@ -6,7 +6,7 @@ const DetailsScreen = ({navigation}) => {
   const [imageSource, setImageSource] = useState(require('./assets/vs_blue.png')); // Hình ảnh mặc định
   const colors = [
     { name: 'bạc', image: require('./assets/vs_silver.png') },
-    { name: 'đỏ', image: require('./assets/vs_red.png') },
+    { name: 'đỏ' , image: require('./assets/vs_red.png') },
     { name: 'đen', image: require('./assets/vs_black.png') },
     { name: 'xanh dương', image: require('./assets/vs_blue.png') },
   ];
