@@ -29,7 +29,7 @@ const DetailsScreen = ({navigation}) => {
       </View>
 
       <View style={styles.body}>
-        <Text style={styles.colorSelectionText}>Chọn một màu bên dưới:</Text>
+        <Text style={styles.colorSelectionText}>Chọn một màu bên dưới: </Text>
         <View style={styles.colorButtonsContainer}>
           {colors.map((color) => (
             <TouchableOpacity
