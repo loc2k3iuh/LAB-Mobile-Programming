@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 // or any files within the Snack
 import AssetExample from './components/AssetExample';
 
-export  function App() {
+export default function AppRandom() {
 
 const [count, setCount] = useState(0);
   return (
