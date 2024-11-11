@@ -38,9 +38,9 @@ return(
 <SafeAreaView style = {styles.container}>
   <View style = {styles.header}>
     <Text style = {{textAlign: 'center', fontWeight: 500, fontSize: 20}}>A premium online store for sporter and their stylish choice </Text>
-    <Image style = {{marginTop: 20}} source = {require("./assets/bifour_-removebg-preview.png")}/>
+    <Image style = {{marginTop: 50}} source = {require("./assets/bifour_-removebg-preview.png")}/>
 
-        <View>
+        <View  style = {{marginTop: 50}}>
           <Text style = {{textAlign: 'center', fontWeight: 700, fontSize: 20}}>POWER BIKE </Text>
           <Text style = {{textAlign: 'center', fontWeight: 700, fontSize: 20}}>SHOP</Text>
         </View>  
@@ -50,7 +50,7 @@ return(
 
 
 
-    <View style= {{alignItems: "center", marginTop: 20}}>
+    <View style= {{alignItems: "center", marginTop: 40}}>
     <TouchableOpacity style= {{flexDirection: "row", alignItems: "center", width: 200, height: 60, backgroundColor: "green", justifyContent: "center", borderRadius: 10}} onPress = {() => {navigation.navigate("List")}}> 
     <Text  style = {{fontSize: 20, fontWeight: 700}} > Get Started </Text>
     </TouchableOpacity>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     header: {
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 10
+        marginTop: 30
     }
 
 

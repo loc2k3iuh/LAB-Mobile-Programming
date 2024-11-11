@@ -11,15 +11,13 @@ import {
 } from 'react-native';
 import React, { useState, useEffect, useCallback } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
-// You can import supported modules from npm
 
-// or any files within the Snack
 import AssetExample from './components/AssetExample';
 
 
 
 
-export default function List() {
+export default function List({navigation, route}) {
    const [data, setData] = useState([]);
      const [selectedCategory, setSelectedCategory] = useState('Roadbike'); 
 
@@ -56,8 +54,8 @@ const filteredData = data.filter(item => {
   }
 
   const RenderItem = ({ item }) => (
-    <View style={{borderWidth: 1, marginLeft: 12, marginBottom: 5}}>
-      <TouchableOpacity>
+    <TouchableOpacity style={{borderWidth: 1, marginLeft: 12, marginBottom: 5}} onPress = {() => {navigation.navigate("Detail", {Data : item})}}>
+      <View >
         <Image source={imageMap[item.anh]}  style = {{width: 150, height: 140}}/>
         <Text  style={{ fontSize: 13, fontWeight: 700, textAlign: "center", color: "red"}}>{item.tenXe}</Text>
         <View
@@ -74,8 +72,8 @@ const filteredData = data.filter(item => {
           <Text style={{ fontSize: 13, fontWeight: 700, textAlign: "center", color: "red"  }}>{item.gia} VND</Text>
           
         </View>
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
